@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   exec_byte.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ethebaul <ethebaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ethebaul <ethebaul@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/09 18:58:11 by ethebaul          #+#    #+#             */
-/*   Updated: 2024/11/14 16:03:43 by ethebaul         ###   ########.fr       */
+/*   Created: 2024/11/06 01:17:39 by ethebaul          #+#    #+#             */
+/*   Updated: 2025/12/19 21:46:36 by ethebaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
-void	ft_putchar_fd(char c, int fd)
+void	function(void)
 {
-	write(fd, &c, 1);
+	unsigned long	of;
+
+	of = (&of)[3];
+	printf("%p\n", of);
+}
+
+int	main(void)
+{
+	function();
+	return (0);
 }
