@@ -1,6 +1,6 @@
 void function(int fd, char *str, unsigned long len)
 {
-	volatile unsigned long buffer[3];
+	volatile unsigned long	buffer[3];
 
 	(void)fd;
 	(void)str;
@@ -12,14 +12,14 @@ void function(int fd, char *str, unsigned long len)
 	buffer[1] = 0x00000009ebdc7d8b;
 	buffer[1] = 0x000008ebd0758b48;
 	buffer[1] = 0xc3c9050fc8558b48;
-	buffer[1] = (unsigned long)&buffer[2];
-	buffer[1] += 24;
+	buffer[1] = (unsigned long)&buffer[2] + 24;
 	buffer[0] = *(unsigned long *)buffer[1];
-	buffer[2] = 1;
+	*(unsigned long *)buffer[1] = (unsigned long)function + 34;
+	*(unsigned long *)buffer[1] += ((*((char *)function + 15) != 0) << 1);
 	buffer[1] = 0;
-	*((unsigned long *)&buffer[2] + 3) = (unsigned long)function + 34;
-	*((unsigned long *)&buffer[2] + 3) += ((*((char *)function + 15) != 0) << 1);
+	buffer[2] = 1;
 	buffer[1] = ((buffer[1] + buffer[2]) * (buffer[1] + buffer[2])) * (buffer[1] + buffer[0]);
+	return ;
 }
 
 int main(void)
